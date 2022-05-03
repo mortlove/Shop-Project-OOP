@@ -20,12 +20,10 @@ class Basket {
         },0);
     }
 
-    showBasket() {
-        this.items
-            .map((product ,i)=> {
-                return `${i + 1}. ${product.name} - ${product.price.toFixed(2)} zł.`;
-            })
-            .forEach(basket => console.log(basket))
+    getSummaryBasket() {
+         return this.items
+            .map((product ,i)=> `${i + 1}. ${product.name} - ${product.price.toFixed(2)} zł.`)
+            //.forEach(newBasket => console.log(newBasket));
     }
 
     remove(no) {
