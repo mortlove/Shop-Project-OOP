@@ -12,7 +12,7 @@ function createBasketLi() {
     }
 }
 
-function addProduct(e) {
+const addProduct = function (e) {
     const name = e.target.dataset.name;
     const price = Number(e.target.dataset.price);
 
@@ -20,6 +20,7 @@ function addProduct(e) {
     basket.add(newProduct);
     console.log(basket.getSummaryBasket());
     createBasketLi();
+
 }
 
 for (const buyBtn of buyBtns) {
