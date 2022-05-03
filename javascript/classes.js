@@ -43,7 +43,7 @@ class Product {
         this.price = newPrice;
     }
 }
-
+/*
 const shopBasket = new Basket();
 
 const oranges = new Product("Pomarańcze LUZ", 7.55);
@@ -62,3 +62,4 @@ shopBasket.add(pizza);
 shopBasket.showBasket();
 
 console.log(shopBasket.getAllValue());
+*/
