@@ -23,7 +23,7 @@ function createBasketLi() {
         const newLi = document.createElement('li');
         newLi.innerText = text;
         newLi.addEventListener('click', removeItem);
-        newLi.dataset = id;
+        newLi.dataset.id = id;
         basketUl.appendChild(newLi);
         //localStorage.setItem("last-visit", JSON.stringify(basket.getSummaryBasket()));
     }
