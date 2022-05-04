@@ -1,29 +1,74 @@
 const basket = new Basket();
 const basketUl = document.querySelector('.basket ul');
+const buyBtns = [...document.querySelectorAll('[data-name]')];
+const submitOrder = document.querySelector(".submitOrder");
 
-const buyBtns = [...document.querySelectorAll('[data-name]')]
+console.log(basket.getAllValue());
+
+/*const lastVisit = localStorage.getItem("last-visit");
+const pStorage = document.querySelector('.storage p');
+pStorage.innerText = JSON.parse(lastVisit);*/
+const removeItem = event => {
+    const id = Number(event.target.dataset.id);
+    console.log(id);
+    basket.remove(id);
+    createBasketLi();
+}
 
 function createBasketLi() {
     basketUl.innerText = "";
-    for (const oneProductInfo of basket.getSummaryBasket()) {
+
+    for (oneProductInfo/*const {id, text}*/ of basket.getSummaryBasket()) {
+        const {id, text} = oneProductInfo
         const newLi = document.createElement('li');
-        newLi.innerText = oneProductInfo;
+        newLi.innerText = text;
+        newLi.addEventListener('click', removeItem);
+        newLi.dataset = id;
         basketUl.appendChild(newLi);
+        //localStorage.setItem("last-visit", JSON.stringify(basket.getSummaryBasket()));
     }
+
+    const basketTotalValue = basket.getAllValue()
+    console.log(basketTotalValue);
+    submitOrder.innerText = `Submit the order due to ${basketTotalValue} PLN.`;
+    submitOrder.disabled = basketTotalValue === 0;
+       /*if (basketTotalValue !== null) {
+        submitOrder.disabled = false;
+        submitOrder.innerText = `Submit the order due to ${basketTotalValue} PLN.`;
+
+    } else {
+        submitOrder.setAttribute("style", "disabled: true")
+        submitOrder.innerText = `Make the Order`;
+    }*/
+
+    /* If Kuby PS. Właśnie Bartek doszedł do mojego pomysłu xD. No ale jest radość!
+        if (basketTotalValue > 0) {
+            submitOrder.removeAttribute("disabled");
+        } else {
+            submitOrder.setAttribute("disabled");
+        }
+     */
+
 }
 
 const addProduct = function (e) {
     const name = e.target.dataset.name;
     const price = Number(e.target.dataset.price);
-
     const newProduct = new Product(name, price);
     basket.add(newProduct);
-    console.log(basket.getSummaryBasket());
     createBasketLi();
+}
 
+function buyAll() {
+    const basketTotalValue = basket.getAllValue()
+    alert(`Ordered for ${basketTotalValue}`);
+    basket.clear();
+    createBasketLi();
 }
 
 for (const buyBtn of buyBtns) {
     buyBtn.addEventListener('click', addProduct)
 }
+
+submitOrder.addEventListener("click", buyAll)
 

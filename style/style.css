@@ -21,7 +21,11 @@ ul {
 }
 
 button {
-    padding: 10px;
+    padding: 20px;
+}
+
+.submitOrder {
+    margin-bottom: 2rem;
 }
 
 section.products ul li {

@@ -6,7 +6,12 @@ class Basket {
 
     add(item) {
         this.items.push(item);
+    }
 
+    clear() {
+        this.items.splice(0);
+        //this.items = []; wszytkie czyszcza ale tutaj tworzymy nowa tablice
+        //this.items.length = 0;
     }
 
     getAllValue() {
@@ -22,8 +27,13 @@ class Basket {
 
     getSummaryBasket() {
          return this.items
-            .map((product ,i)=> `${i + 1}. ${product.name} - ${product.price.toFixed(2)} zł.`)
-            //.forEach(newBasket => console.log(newBasket));
+            .map((product ,i)=> {
+                return {
+                    id: i + 1,
+                    text: `${i + 1}. ${product.name} - ${product.price.toFixed(2)} zł.`,
+            }})
+             //.forEach(newBasket => console.log(newBasket));
+
     }
 
     remove(no) {
