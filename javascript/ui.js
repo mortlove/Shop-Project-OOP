@@ -2,6 +2,7 @@ const basket = new Basket();
 const basketUl = document.querySelector('.basket ul');
 const buyBtns = [...document.querySelectorAll('[data-name]')];
 const submitOrder = document.querySelector(".submitOrder");
+const btnRemover = document.querySelector('.remover');
 
 /*const lastVisit = localStorage.getItem("last-visit");
 const pStorage = document.querySelector('.storage p');
@@ -11,6 +12,15 @@ const removeItem = event => {
     console.log(id);
     basket.remove(id);
     createBasketLi();
+}
+
+function cleanUl() {
+    basketUl.innerText = "";
+    basket.clear();
+    const basketTotalValue = basket.getAllValue()
+    submitOrder.disabled = basketTotalValue === 0;
+    submitOrder.innerText = `Make the Order!`;
+    console.log(basketTotalValue);
 }
 
 function createBasketLi() {
@@ -30,6 +40,9 @@ function createBasketLi() {
     console.log(basketTotalValue);
     submitOrder.innerText = `Submit the order due to ${basketTotalValue} PLN.`;
     submitOrder.disabled = basketTotalValue === 0;
+    if (basketTotalValue === 0) {
+        submitOrder.innerText = `Make the Order!`;
+    }
        /*if (basketTotalValue !== null) {
         submitOrder.disabled = false;
         submitOrder.innerText = `Submit the order due to ${basketTotalValue} PLN.`;
@@ -68,5 +81,6 @@ for (const buyBtn of buyBtns) {
     buyBtn.addEventListener('click', addProduct)
 }
 
-submitOrder.addEventListener("click", buyAll)
+submitOrder.addEventListener("click", buyAll);
+btnRemover.addEventListener('click', cleanUl);
 

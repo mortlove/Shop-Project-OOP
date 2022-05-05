@@ -10,7 +10,7 @@
 <body>
     <section class="products">
         <h1>Product list:</h1>
-            <ul>
+            <ul class="shopUl">
                 <li>
                     <strong>Ogórki kiszone</strong> 9.99 PLN <button class="btn-buy-product" data-name="Ogórki kiszone" data-price="9.99">Buy</button>
                 </li>
@@ -41,9 +41,20 @@
         <h1>Administration: add product</h1>
         <form>
             <label>
-                <input type="text" placeholder="Type name of product.." required>
-                <input type="number" placeholder="Type number" required>
-                <input type="submit" value="Send!">
+                <input
+                        type="text"
+                        name="name"
+                        placeholder="Type name of product.."
+                        required>
+                <input
+                        type="number"
+                        name="price"
+                        placeholder="Type number"
+                        required>
+                <input
+                        type="submit"
+                        name="submit"
+                        value="Send!">
             </label>
         </form>
     </section>
