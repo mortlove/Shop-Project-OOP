@@ -3,8 +3,6 @@ const basketUl = document.querySelector('.basket ul');
 const buyBtns = [...document.querySelectorAll('[data-name]')];
 const submitOrder = document.querySelector(".submitOrder");
 
-console.log(basket.getAllValue());
-
 /*const lastVisit = localStorage.getItem("last-visit");
 const pStorage = document.querySelector('.storage p');
 pStorage.innerText = JSON.parse(lastVisit);*/
@@ -41,7 +39,7 @@ function createBasketLi() {
         submitOrder.innerText = `Make the Order`;
     }*/
 
-    /* If Kuby PS. Właśnie Bartek doszedł do mojego pomysłu xD. No ale jest radość!
+    /*
         if (basketTotalValue > 0) {
             submitOrder.removeAttribute("disabled");
         } else {
