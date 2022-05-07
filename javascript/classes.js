@@ -1,6 +1,8 @@
 class Basket {
     constructor() {
-        this.items = this.loadFromLocalStorage();
+        const ls = this.loadFromLocalStorage();
+        console.log(ls);
+        this.items = ls ? ls : [];
 
     }
 
@@ -51,14 +53,14 @@ class Basket {
     }
 
     loadFromLocalStorage() {
-        const itemsJson = localStorage.getItem('basket-items');
+        return JSON.parse(localStorage.getItem('basket-items'));}
 
-        if (itemsJson === null) {
+        /*if (itemsJson === null) {
+            console.log('dziala');
             return [];
         } else {
             return JSON.parse(itemsJson);
-        }
-    }
+        }}
 }
 
 
