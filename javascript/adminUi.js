@@ -1,7 +1,7 @@
 const form = document.querySelector('form');
 const inputName = document.querySelector('[name="name"]');
 const inputPrice = document.querySelector('[name="price"]');
-const shopUl = document.querySelector('.shopUl');
+const shopUl = document.querySelector('.products ul');
 //const inputBtn = document.querySelector('[name="subBtn"]');
 
 const addProductToShop = (e) => {
@@ -15,18 +15,20 @@ const addProductToShop = (e) => {
     newStrong.innerText = name;
 
     const newPriceText = document.createTextNode(` ${price.toFixed(2)}`);
-
+    const newBtn = document.createElement('button');
+    newBtn.classList.add('btn-buy-product');
+    newBtn.dataset.name = name;
+    newBtn.dataset.price = price.toFixed(2);
+    newBtn.innerText = "Buy";
 
     newLi.appendChild(newStrong);
     newLi.appendChild(newPriceText);
+    newLi.appendChild(newBtn);
 
     shopUl.appendChild(newLi);
-    console.log(shopUl.childNodes[0].value);
-    console.log(shopUl.childNodes[1].value);
-    console.log(shopUl.childNodes[2].value);
 
-
-};
+    newBtn.addEventListener('click', addProduct);
+  };
 
 form.addEventListener('submit', addProductToShop);
 

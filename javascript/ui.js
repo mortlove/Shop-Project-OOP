@@ -43,22 +43,6 @@ function createBasketLi() {
     if (basketTotalValue === 0) {
         submitOrder.innerText = `Make the Order!`;
     }
-       /*if (basketTotalValue !== null) {
-        submitOrder.disabled = false;
-        submitOrder.innerText = `Submit the order due to ${basketTotalValue} PLN.`;
-
-    } else {
-        submitOrder.setAttribute("style", "disabled: true")
-        submitOrder.innerText = `Make the Order`;
-    }*/
-
-    /*
-        if (basketTotalValue > 0) {
-            submitOrder.removeAttribute("disabled");
-        } else {
-            submitOrder.setAttribute("disabled");
-        }
-     */
 
 }
 
@@ -83,4 +67,5 @@ for (const buyBtn of buyBtns) {
 
 submitOrder.addEventListener("click", buyAll);
 btnRemover.addEventListener('click', cleanUl);
+createBasketLi();
 
