@@ -51,19 +51,16 @@ class Basket {
         localStorage.setItem('basket-items', JSON.stringify(this.items));
 
     }
-
     loadFromLocalStorage() {
-        return JSON.parse(localStorage.getItem('basket-items'));}
-
-        /*if (itemsJson === null) {
+        return JSON.parse(localStorage.getItem('basket-items'));
+    }
+}
+        /*  if (itemsJson === null) {
             console.log('dziala');
             return [];
         } else {
             return JSON.parse(itemsJson);
-        }}
-}
-
-
+        }}*/
 
 class Product {
     constructor(producteName, productePrice) {
